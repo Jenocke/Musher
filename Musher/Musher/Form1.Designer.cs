@@ -52,7 +52,7 @@
             // lbl_MushName
             // 
             this.lbl_MushName.AutoSize = true;
-            this.lbl_MushName.Location = new System.Drawing.Point(35, 99);
+            this.lbl_MushName.Location = new System.Drawing.Point(126, 97);
             this.lbl_MushName.Name = "lbl_MushName";
             this.lbl_MushName.Size = new System.Drawing.Size(73, 13);
             this.lbl_MushName.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             // txtBox_MushName
             // 
-            this.txtBox_MushName.Location = new System.Drawing.Point(38, 115);
+            this.txtBox_MushName.Location = new System.Drawing.Point(129, 113);
             this.txtBox_MushName.Name = "txtBox_MushName";
             this.txtBox_MushName.Size = new System.Drawing.Size(211, 20);
             this.txtBox_MushName.TabIndex = 2;
@@ -121,7 +121,7 @@
             "D3",
             "O1",
             "O2"});
-            this.cbb_Category.Location = new System.Drawing.Point(38, 253);
+            this.cbb_Category.Location = new System.Drawing.Point(129, 251);
             this.cbb_Category.Name = "cbb_Category";
             this.cbb_Category.Size = new System.Drawing.Size(121, 21);
             this.cbb_Category.TabIndex = 6;
@@ -129,7 +129,7 @@
             // lbl_Category
             // 
             this.lbl_Category.AutoSize = true;
-            this.lbl_Category.Location = new System.Drawing.Point(38, 234);
+            this.lbl_Category.Location = new System.Drawing.Point(129, 232);
             this.lbl_Category.Name = "lbl_Category";
             this.lbl_Category.Size = new System.Drawing.Size(49, 13);
             this.lbl_Category.TabIndex = 7;
