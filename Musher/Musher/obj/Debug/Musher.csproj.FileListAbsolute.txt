@@ -9,3 +9,9 @@ E:\Projets\Repos\Musher\Musher\Musher\obj\Debug\Musher.csproj.GenerateResource.c
 E:\Projets\Repos\Musher\Musher\Musher\obj\Debug\Musher.csproj.CoreCompileInputs.cache
 E:\Projets\Repos\Musher\Musher\Musher\obj\Debug\Musher.exe
 E:\Projets\Repos\Musher\Musher\Musher\obj\Debug\Musher.pdb
+E:\Projets\Repos\Musher\Musher\Musher\bin\Debug\EntityFramework.dll
+E:\Projets\Repos\Musher\Musher\Musher\bin\Debug\EntityFramework.SqlServer.dll
+E:\Projets\Repos\Musher\Musher\Musher\bin\Debug\EntityFramework.xml
+E:\Projets\Repos\Musher\Musher\Musher\bin\Debug\EntityFramework.SqlServer.xml
+E:\Projets\Repos\Musher\Musher\Musher\bin\Debug\fr\EntityFramework.resources.dll
+E:\Projets\Repos\Musher\Musher\Musher\obj\Debug\Musher.csproj.CopyComplete

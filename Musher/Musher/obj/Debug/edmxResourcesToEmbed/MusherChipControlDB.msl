@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MusherChipControlModelStoreContainer" CdmEntityContainer="MusherChipControlEntities">
+    <EntitySetMapping Name="Category_Table">
+      <EntityTypeMapping TypeName="MusherChipControlModel.Category_Table">
+        <MappingFragment StoreEntitySet="Category_Table">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musher_Table">
+      <EntityTypeMapping TypeName="MusherChipControlModel.Musher_Table">
+        <MappingFragment StoreEntitySet="Musher_Table">
+          <ScalarProperty Name="MusherNumber" ColumnName="MusherNumber" />
+          <ScalarProperty Name="MusherName" ColumnName="MusherName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
