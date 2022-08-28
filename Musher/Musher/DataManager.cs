@@ -51,7 +51,7 @@ namespace Musher
                             }
                             else if (rows.Count() == 1)
                             {
-                                if (rows[0].ArrivalDay1 != date)
+                                if (rows[0].ArrivalDay1 != date && rows[0].ArrivalDay2 == 0)
                                 {
                                     rows[0].ArrivalDay2 = date;
                                     musherChipControlEntities.SaveChanges();

@@ -22,12 +22,12 @@ namespace Musher
         private void ShowArrivalsForm_Load(object sender, EventArgs e)
         {
 
-            //var dogsArrivals = _dbArrivals.DogsTable.Select(q => new { MusherID = q.LinkedArrival, ChipID = q.DogChip}).ToList();
+            var dogsArrivals = _dbArrivals.DogsTable.Select(q => new { MusherID = q.LinkedMusher, ChipID = q.DogChip}).ToList();
             /*foreach (var arri in arrivals)
             {
 
             }*/
-            //arrivalsView.DataSource = dogsArrivals;
+            arrivalsView.DataSource = dogsArrivals;
             //arrivalsView.Columns[0].HeaderText = "Linked ID";
             //arrivalsView.Columns[1].HeaderText = "Chip ID";
            // arrivalsView.Columns[2].HeaderText = "Arrival Date";
