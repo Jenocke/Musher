@@ -12,13 +12,11 @@ namespace Musher
     using System;
     using System.Collections.Generic;
     
-    public partial class Musher_Table
+    public partial class DogsTable
     {
-        public int MusherNumber { get; set; }
-        public string MusherName { get; set; }
-        public int Category { get; set; }
-        public long WatchID { get; set; }
+        public long DogChip { get; set; }
+        public int LinkedArrival { get; set; }
     
-        public virtual Category_Table Category_Table { get; set; }
+        public virtual Arrivals_Table Arrivals_Table { get; set; }
     }
 }

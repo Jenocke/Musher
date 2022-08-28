@@ -55,14 +55,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category_Table.cs">
-      <DependentUpon>MusherChipControlDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="AddMusherForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddMusherForm.Designer.cs">
       <DependentUpon>AddMusherForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Arrivals_Table.cs">
+      <DependentUpon>MusherChipControlDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category_Table.cs">
+      <DependentUpon>MusherChipControlDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager.cs" />
+    <Compile Include="DogsTable.cs">
+      <DependentUpon>MusherChipControlDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="MusherChipControlDB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -86,6 +99,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddMusherForm.resx">
       <DependentUpon>AddMusherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -25,7 +25,9 @@ namespace Musher
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Arrivals_Table> Arrivals_Table { get; set; }
         public virtual DbSet<Category_Table> Category_Table { get; set; }
+        public virtual DbSet<DogsTable> DogsTable { get; set; }
         public virtual DbSet<Musher_Table> Musher_Table { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Musher
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddMusherForm());
+            Application.Run(new MainWindow());
         }
     }
 }

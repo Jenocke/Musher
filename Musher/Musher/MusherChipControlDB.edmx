@@ -4,13 +4,28 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MusherChipControlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Arrivals_Table">
+          <Key>
+            <PropertyRef Name="ArrivalID" />
+          </Key>
+          <Property Name="ArrivalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArrivalDay" Type="int" Nullable="false" />
+          <Property Name="WatchID" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="Category_Table">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DogsTable">
+          <Key>
+            <PropertyRef Name="DogChip" />
+          </Key>
+          <Property Name="DogChip" Type="bigint" Nullable="false" />
+          <Property Name="LinkedArrival" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Musher_Table">
           <Key>
@@ -19,7 +34,20 @@
           <Property Name="MusherNumber" Type="int" Nullable="false" />
           <Property Name="MusherName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Category" Type="int" Nullable="false" />
+          <Property Name="WatchID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <Association Name="FK_DogsTable_Arrivals_Table">
+          <End Role="Arrivals_Table" Type="Self.Arrivals_Table" Multiplicity="1" />
+          <End Role="DogsTable" Type="Self.DogsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arrivals_Table">
+              <PropertyRef Name="ArrivalID" />
+            </Principal>
+            <Dependent Role="DogsTable">
+              <PropertyRef Name="LinkedArrival" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Musher_Table_Category_Table">
           <End Role="Category_Table" Type="Self.Category_Table" Multiplicity="1" />
           <End Role="Musher_Table" Type="Self.Musher_Table" Multiplicity="*" />
@@ -32,39 +60,88 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MusherChipControlModelStoreContainer">
+        <EntityContainer Name="StoreContainer">
+          <EntitySet Name="Arrivals_Table" EntityType="Self.Arrivals_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category_Table" EntityType="Self.Category_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DogsTable" EntityType="Self.DogsTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Musher_Table" EntityType="Self.Musher_Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DogsTable_Arrivals_Table" Association="Self.FK_DogsTable_Arrivals_Table">
+            <End Role="Arrivals_Table" EntitySet="Arrivals_Table" />
+            <End Role="DogsTable" EntitySet="DogsTable" />
+          </AssociationSet>
           <AssociationSet Name="FK_Musher_Table_Category_Table" Association="Self.FK_Musher_Table_Category_Table">
             <End Role="Category_Table" EntitySet="Category_Table" />
             <End Role="Musher_Table" EntitySet="Musher_Table" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MusherChipControlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MusherChipControlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Arrivals_Table" EntityType="MusherChipControlModel.Arrivals_Table" />
+          <EntitySet Name="Category_Table" EntityType="MusherChipControlModel.Category_Table" />
+          <EntitySet Name="DogsTable" EntityType="MusherChipControlModel.DogsTable" />
+          <EntitySet Name="Musher_Table" EntityType="MusherChipControlModel.Musher_Table" />
+          <AssociationSet Name="FK_DogsTable_Arrivals_Table" Association="MusherChipControlModel.FK_DogsTable_Arrivals_Table">
+            <End Role="Arrivals_Table" EntitySet="Arrivals_Table" />
+            <End Role="DogsTable" EntitySet="DogsTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musher_Table_Category_Table" Association="MusherChipControlModel.FK_Musher_Table_Category_Table">
+            <End Role="Category_Table" EntitySet="Category_Table" />
+            <End Role="Musher_Table" EntitySet="Musher_Table" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Arrivals_Table">
+          <Key>
+            <PropertyRef Name="ArrivalID" />
+          </Key>
+          <Property Name="ArrivalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArrivalDay" Type="Int32" Nullable="false" />
+          <Property Name="WatchID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="DogsTable" Relationship="MusherChipControlModel.FK_DogsTable_Arrivals_Table" FromRole="Arrivals_Table" ToRole="DogsTable" />
+        </EntityType>
         <EntityType Name="Category_Table">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Musher_Table" Relationship="Self.FK_Musher_Table_Category_Table" FromRole="Category_Table" ToRole="Musher_Table" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Musher_Table" Relationship="MusherChipControlModel.FK_Musher_Table_Category_Table" FromRole="Category_Table" ToRole="Musher_Table" />
+        </EntityType>
+        <EntityType Name="DogsTable">
+          <Key>
+            <PropertyRef Name="DogChip" />
+          </Key>
+          <Property Name="DogChip" Type="Int64" Nullable="false" />
+          <Property Name="LinkedArrival" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Arrivals_Table" Relationship="MusherChipControlModel.FK_DogsTable_Arrivals_Table" FromRole="DogsTable" ToRole="Arrivals_Table" />
         </EntityType>
         <EntityType Name="Musher_Table">
           <Key>
             <PropertyRef Name="MusherNumber" />
           </Key>
           <Property Name="MusherNumber" Type="Int32" Nullable="false" />
-          <Property Name="MusherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MusherName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Category" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category_Table" Relationship="Self.FK_Musher_Table_Category_Table" FromRole="Musher_Table" ToRole="Category_Table" />
+          <Property Name="WatchID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Category_Table" Relationship="MusherChipControlModel.FK_Musher_Table_Category_Table" FromRole="Musher_Table" ToRole="Category_Table" />
         </EntityType>
+        <Association Name="FK_DogsTable_Arrivals_Table">
+          <End Type="MusherChipControlModel.Arrivals_Table" Role="Arrivals_Table" Multiplicity="1" />
+          <End Type="MusherChipControlModel.DogsTable" Role="DogsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arrivals_Table">
+              <PropertyRef Name="ArrivalID" />
+            </Principal>
+            <Dependent Role="DogsTable">
+              <PropertyRef Name="LinkedArrival" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Musher_Table_Category_Table">
-          <End Role="Category_Table" Type="Self.Category_Table" Multiplicity="1" />
-          <End Role="Musher_Table" Type="Self.Musher_Table" Multiplicity="*" />
+          <End Type="MusherChipControlModel.Category_Table" Role="Category_Table" Multiplicity="1" />
+          <End Type="MusherChipControlModel.Musher_Table" Role="Musher_Table" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category_Table">
               <PropertyRef Name="Id" />
@@ -74,40 +151,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MusherChipControlEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Category_Table" EntityType="Self.Category_Table" />
-          <EntitySet Name="Musher_Table" EntityType="Self.Musher_Table" />
-          <AssociationSet Name="FK_Musher_Table_Category_Table" Association="Self.FK_Musher_Table_Category_Table">
-            <End Role="Category_Table" EntitySet="Category_Table" />
-            <End Role="Musher_Table" EntitySet="Musher_Table" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MusherChipControlModelStoreContainer" CdmEntityContainer="MusherChipControlEntities">
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StoreContainer" CdmEntityContainer="MusherChipControlEntities" >
+          <EntitySetMapping Name="Arrivals_Table">
+            <EntityTypeMapping TypeName="MusherChipControlModel.Arrivals_Table">
+              <MappingFragment StoreEntitySet="Arrivals_Table">
+                <ScalarProperty Name="WatchID" ColumnName="WatchID" />
+                <ScalarProperty Name="ArrivalDay" ColumnName="ArrivalDay" />
+                <ScalarProperty Name="ArrivalID" ColumnName="ArrivalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Category_Table">
             <EntityTypeMapping TypeName="MusherChipControlModel.Category_Table">
               <MappingFragment StoreEntitySet="Category_Table">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DogsTable">
+            <EntityTypeMapping TypeName="MusherChipControlModel.DogsTable">
+              <MappingFragment StoreEntitySet="DogsTable">
+                <ScalarProperty Name="LinkedArrival" ColumnName="LinkedArrival" />
+                <ScalarProperty Name="DogChip" ColumnName="DogChip" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Musher_Table">
             <EntityTypeMapping TypeName="MusherChipControlModel.Musher_Table">
               <MappingFragment StoreEntitySet="Musher_Table">
-                <ScalarProperty Name="MusherNumber" ColumnName="MusherNumber" />
-                <ScalarProperty Name="MusherName" ColumnName="MusherName" />
+                <ScalarProperty Name="WatchID" ColumnName="WatchID" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="MusherName" ColumnName="MusherName" />
+                <ScalarProperty Name="MusherNumber" ColumnName="MusherNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -121,7 +207,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
       </DesignerInfoPropertySet>
     </Options>

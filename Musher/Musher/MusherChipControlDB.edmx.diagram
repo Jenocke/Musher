@@ -5,9 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d5eeb496aa2848498083fa46f999ee07" Name="Diagram1">
-        <EntityTypeShape EntityType="MusherChipControlModel.Category_Table" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusherChipControlModel.Musher_Table" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="MusherChipControlModel.FK_Musher_Table_Category_Table" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MusherChipControlModel.Arrivals_Table" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="MusherChipControlModel.Category_Table" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="MusherChipControlModel.DogsTable" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="MusherChipControlModel.Musher_Table" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="MusherChipControlModel.FK_DogsTable_Arrivals_Table" />
+        <AssociationConnector Association="MusherChipControlModel.FK_Musher_Table_Category_Table" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

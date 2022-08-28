@@ -1,11 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MusherChipControlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Arrivals_Table">
+    <Key>
+      <PropertyRef Name="ArrivalID" />
+    </Key>
+    <Property Name="ArrivalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArrivalDay" Type="int" Nullable="false" />
+    <Property Name="WatchID" Type="bigint" Nullable="false" />
+  </EntityType>
   <EntityType Name="Category_Table">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DogsTable">
+    <Key>
+      <PropertyRef Name="DogChip" />
+    </Key>
+    <Property Name="DogChip" Type="bigint" Nullable="false" />
+    <Property Name="LinkedArrival" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Musher_Table">
     <Key>
@@ -14,7 +29,20 @@
     <Property Name="MusherNumber" Type="int" Nullable="false" />
     <Property Name="MusherName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Category" Type="int" Nullable="false" />
+    <Property Name="WatchID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
+  <Association Name="FK_DogsTable_Arrivals_Table">
+    <End Role="Arrivals_Table" Type="Self.Arrivals_Table" Multiplicity="1" />
+    <End Role="DogsTable" Type="Self.DogsTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arrivals_Table">
+        <PropertyRef Name="ArrivalID" />
+      </Principal>
+      <Dependent Role="DogsTable">
+        <PropertyRef Name="LinkedArrival" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Musher_Table_Category_Table">
     <End Role="Category_Table" Type="Self.Category_Table" Multiplicity="1" />
     <End Role="Musher_Table" Type="Self.Musher_Table" Multiplicity="*" />
@@ -27,9 +55,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MusherChipControlModelStoreContainer">
+  <EntityContainer Name="StoreContainer">
+    <EntitySet Name="Arrivals_Table" EntityType="Self.Arrivals_Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category_Table" EntityType="Self.Category_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DogsTable" EntityType="Self.DogsTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Musher_Table" EntityType="Self.Musher_Table" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DogsTable_Arrivals_Table" Association="Self.FK_DogsTable_Arrivals_Table">
+      <End Role="Arrivals_Table" EntitySet="Arrivals_Table" />
+      <End Role="DogsTable" EntitySet="DogsTable" />
+    </AssociationSet>
     <AssociationSet Name="FK_Musher_Table_Category_Table" Association="Self.FK_Musher_Table_Category_Table">
       <End Role="Category_Table" EntitySet="Category_Table" />
       <End Role="Musher_Table" EntitySet="Musher_Table" />

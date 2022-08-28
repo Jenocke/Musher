@@ -12,13 +12,19 @@ namespace Musher
     using System;
     using System.Collections.Generic;
     
-    public partial class Musher_Table
+    public partial class Arrivals_Table
     {
-        public int MusherNumber { get; set; }
-        public string MusherName { get; set; }
-        public int Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Arrivals_Table()
+        {
+            this.DogsTable = new HashSet<DogsTable>();
+        }
+    
+        public int ArrivalID { get; set; }
+        public int ArrivalDay { get; set; }
         public long WatchID { get; set; }
     
-        public virtual Category_Table Category_Table { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DogsTable> DogsTable { get; set; }
     }
 }

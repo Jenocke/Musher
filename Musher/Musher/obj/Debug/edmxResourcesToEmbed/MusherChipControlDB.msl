@@ -1,20 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MusherChipControlModelStoreContainer" CdmEntityContainer="MusherChipControlEntities">
+  <EntityContainerMapping StorageEntityContainer="StoreContainer" CdmEntityContainer="MusherChipControlEntities">
+    <EntitySetMapping Name="Arrivals_Table">
+      <EntityTypeMapping TypeName="MusherChipControlModel.Arrivals_Table">
+        <MappingFragment StoreEntitySet="Arrivals_Table">
+          <ScalarProperty Name="WatchID" ColumnName="WatchID" />
+          <ScalarProperty Name="ArrivalDay" ColumnName="ArrivalDay" />
+          <ScalarProperty Name="ArrivalID" ColumnName="ArrivalID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Category_Table">
       <EntityTypeMapping TypeName="MusherChipControlModel.Category_Table">
         <MappingFragment StoreEntitySet="Category_Table">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DogsTable">
+      <EntityTypeMapping TypeName="MusherChipControlModel.DogsTable">
+        <MappingFragment StoreEntitySet="DogsTable">
+          <ScalarProperty Name="LinkedArrival" ColumnName="LinkedArrival" />
+          <ScalarProperty Name="DogChip" ColumnName="DogChip" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Musher_Table">
       <EntityTypeMapping TypeName="MusherChipControlModel.Musher_Table">
         <MappingFragment StoreEntitySet="Musher_Table">
-          <ScalarProperty Name="MusherNumber" ColumnName="MusherNumber" />
-          <ScalarProperty Name="MusherName" ColumnName="MusherName" />
+          <ScalarProperty Name="WatchID" ColumnName="WatchID" />
           <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="MusherName" ColumnName="MusherName" />
+          <ScalarProperty Name="MusherNumber" ColumnName="MusherNumber" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

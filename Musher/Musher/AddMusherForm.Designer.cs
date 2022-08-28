@@ -125,11 +125,12 @@
             this.lbl_Category.TabIndex = 7;
             this.lbl_Category.Text = "Category";
             // 
-            // Form1
+            // AddMusherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(964, 598);
             this.Controls.Add(this.lbl_Category);
             this.Controls.Add(this.cbb_Category);
             this.Controls.Add(this.btn_Submit);
@@ -138,8 +139,12 @@
             this.Controls.Add(this.txtBox_MushName);
             this.Controls.Add(this.lbl_MushName);
             this.Controls.Add(this.lbl_Title);
-            this.Name = "Form1";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "AddMusherForm";
+            this.ShowIcon = false;
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.num_MushNumber)).EndInit();
             this.ResumeLayout(false);
