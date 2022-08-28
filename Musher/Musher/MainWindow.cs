@@ -34,5 +34,12 @@ namespace Musher
                 DataManager.ProcessArrivals(filePath);
             }
         }
+
+        private void viewArrivalsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var window = new ShowArrivalsForm();
+            window.MdiParent = this;
+            window.Show();
+        }
     }
 }

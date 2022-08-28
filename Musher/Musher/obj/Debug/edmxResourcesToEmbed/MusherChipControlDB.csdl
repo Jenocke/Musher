@@ -16,11 +16,11 @@
   </EntityContainer>
   <EntityType Name="Arrivals_Table">
     <Key>
-      <PropertyRef Name="ArrivalID" />
+      <PropertyRef Name="WatchID" />
     </Key>
-    <Property Name="ArrivalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ArrivalDay" Type="Int32" Nullable="false" />
     <Property Name="WatchID" Type="Int64" Nullable="false" />
+    <Property Name="ArrivalDay1" Type="Int32" Nullable="false" />
+    <Property Name="ArrivalDay2" Type="Int32" />
     <NavigationProperty Name="DogsTable" Relationship="MusherChipControlModel.FK_DogsTable_Arrivals_Table" FromRole="Arrivals_Table" ToRole="DogsTable" />
   </EntityType>
   <EntityType Name="Category_Table">
@@ -36,7 +36,7 @@
       <PropertyRef Name="DogChip" />
     </Key>
     <Property Name="DogChip" Type="Int64" Nullable="false" />
-    <Property Name="LinkedArrival" Type="Int32" Nullable="false" />
+    <Property Name="LinkedMusher" Type="Int64" Nullable="false" />
     <NavigationProperty Name="Arrivals_Table" Relationship="MusherChipControlModel.FK_DogsTable_Arrivals_Table" FromRole="DogsTable" ToRole="Arrivals_Table" />
   </EntityType>
   <EntityType Name="Musher_Table">
@@ -54,10 +54,10 @@
     <End Type="MusherChipControlModel.DogsTable" Role="DogsTable" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Arrivals_Table">
-        <PropertyRef Name="ArrivalID" />
+        <PropertyRef Name="WatchID" />
       </Principal>
       <Dependent Role="DogsTable">
-        <PropertyRef Name="LinkedArrival" />
+        <PropertyRef Name="LinkedMusher" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

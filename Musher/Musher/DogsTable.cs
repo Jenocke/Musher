@@ -15,7 +15,7 @@ namespace Musher
     public partial class DogsTable
     {
         public long DogChip { get; set; }
-        public int LinkedArrival { get; set; }
+        public long LinkedMusher { get; set; }
     
         public virtual Arrivals_Table Arrivals_Table { get; set; }
     }

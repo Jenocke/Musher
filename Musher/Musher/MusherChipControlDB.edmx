@@ -7,11 +7,11 @@
     <Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Arrivals_Table">
           <Key>
-            <PropertyRef Name="ArrivalID" />
+            <PropertyRef Name="WatchID" />
           </Key>
-          <Property Name="ArrivalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ArrivalDay" Type="int" Nullable="false" />
           <Property Name="WatchID" Type="bigint" Nullable="false" />
+          <Property Name="ArrivalDay1" Type="int" Nullable="false" />
+          <Property Name="ArrivalDay2" Type="int" />
         </EntityType>
         <EntityType Name="Category_Table">
           <Key>
@@ -25,7 +25,7 @@
             <PropertyRef Name="DogChip" />
           </Key>
           <Property Name="DogChip" Type="bigint" Nullable="false" />
-          <Property Name="LinkedArrival" Type="int" Nullable="false" />
+          <Property Name="LinkedMusher" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Musher_Table">
           <Key>
@@ -41,10 +41,10 @@
           <End Role="DogsTable" Type="Self.DogsTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Arrivals_Table">
-              <PropertyRef Name="ArrivalID" />
+              <PropertyRef Name="WatchID" />
             </Principal>
             <Dependent Role="DogsTable">
-              <PropertyRef Name="LinkedArrival" />
+              <PropertyRef Name="LinkedMusher" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -94,11 +94,11 @@
         </EntityContainer>
         <EntityType Name="Arrivals_Table">
           <Key>
-            <PropertyRef Name="ArrivalID" />
+            <PropertyRef Name="WatchID" />
           </Key>
-          <Property Name="ArrivalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ArrivalDay" Type="Int32" Nullable="false" />
           <Property Name="WatchID" Type="Int64" Nullable="false" />
+          <Property Name="ArrivalDay1" Type="Int32" Nullable="false" />
+          <Property Name="ArrivalDay2" Type="Int32" />
           <NavigationProperty Name="DogsTable" Relationship="MusherChipControlModel.FK_DogsTable_Arrivals_Table" FromRole="Arrivals_Table" ToRole="DogsTable" />
         </EntityType>
         <EntityType Name="Category_Table">
@@ -114,7 +114,7 @@
             <PropertyRef Name="DogChip" />
           </Key>
           <Property Name="DogChip" Type="Int64" Nullable="false" />
-          <Property Name="LinkedArrival" Type="Int32" Nullable="false" />
+          <Property Name="LinkedMusher" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Arrivals_Table" Relationship="MusherChipControlModel.FK_DogsTable_Arrivals_Table" FromRole="DogsTable" ToRole="Arrivals_Table" />
         </EntityType>
         <EntityType Name="Musher_Table">
@@ -132,10 +132,10 @@
           <End Type="MusherChipControlModel.DogsTable" Role="DogsTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Arrivals_Table">
-              <PropertyRef Name="ArrivalID" />
+              <PropertyRef Name="WatchID" />
             </Principal>
             <Dependent Role="DogsTable">
-              <PropertyRef Name="LinkedArrival" />
+              <PropertyRef Name="LinkedMusher" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -160,9 +160,9 @@
           <EntitySetMapping Name="Arrivals_Table">
             <EntityTypeMapping TypeName="MusherChipControlModel.Arrivals_Table">
               <MappingFragment StoreEntitySet="Arrivals_Table">
+                <ScalarProperty Name="ArrivalDay2" ColumnName="ArrivalDay2" />
+                <ScalarProperty Name="ArrivalDay1" ColumnName="ArrivalDay1" />
                 <ScalarProperty Name="WatchID" ColumnName="WatchID" />
-                <ScalarProperty Name="ArrivalDay" ColumnName="ArrivalDay" />
-                <ScalarProperty Name="ArrivalID" ColumnName="ArrivalID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -177,7 +177,7 @@
           <EntitySetMapping Name="DogsTable">
             <EntityTypeMapping TypeName="MusherChipControlModel.DogsTable">
               <MappingFragment StoreEntitySet="DogsTable">
-                <ScalarProperty Name="LinkedArrival" ColumnName="LinkedArrival" />
+                <ScalarProperty Name="LinkedMusher" ColumnName="LinkedMusher" />
                 <ScalarProperty Name="DogChip" ColumnName="DogChip" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -71,6 +71,13 @@
     <Compile Include="DogsTable.cs">
       <DependentUpon>MusherChipControlDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Musher.cs" />
+    <Compile Include="ShowArrivalsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowArrivalsForm.Designer.cs">
+      <DependentUpon>ShowArrivalsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +119,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ShowArrivalsForm.resx">
+      <DependentUpon>ShowArrivalsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="MusherChipControlDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MusherChipControlDB.Designer.cs</LastGenOutput>

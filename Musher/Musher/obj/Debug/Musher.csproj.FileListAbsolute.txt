@@ -16,3 +16,4 @@ E:\Projets\Repos\Musher\Musher\Musher\bin\Debug\fr\EntityFramework.resources.dll
 E:\Projets\Repos\Musher\Musher\Musher\obj\Debug\Musher.csproj.CopyComplete
 E:\Projets\Repos\Musher\Musher\Musher\obj\Debug\Musher.AddMusherForm.resources
 E:\Projets\Repos\Musher\Musher\Musher\obj\Debug\Musher.MainWindow.resources
+E:\Projets\Repos\Musher\Musher\Musher\obj\Debug\Musher.ShowArrivalsForm.resources

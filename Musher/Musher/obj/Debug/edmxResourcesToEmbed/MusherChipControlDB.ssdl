@@ -2,11 +2,11 @@
 <Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Arrivals_Table">
     <Key>
-      <PropertyRef Name="ArrivalID" />
+      <PropertyRef Name="WatchID" />
     </Key>
-    <Property Name="ArrivalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ArrivalDay" Type="int" Nullable="false" />
     <Property Name="WatchID" Type="bigint" Nullable="false" />
+    <Property Name="ArrivalDay1" Type="int" Nullable="false" />
+    <Property Name="ArrivalDay2" Type="int" />
   </EntityType>
   <EntityType Name="Category_Table">
     <Key>
@@ -20,7 +20,7 @@
       <PropertyRef Name="DogChip" />
     </Key>
     <Property Name="DogChip" Type="bigint" Nullable="false" />
-    <Property Name="LinkedArrival" Type="int" Nullable="false" />
+    <Property Name="LinkedMusher" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="Musher_Table">
     <Key>
@@ -36,10 +36,10 @@
     <End Role="DogsTable" Type="Self.DogsTable" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Arrivals_Table">
-        <PropertyRef Name="ArrivalID" />
+        <PropertyRef Name="WatchID" />
       </Principal>
       <Dependent Role="DogsTable">
-        <PropertyRef Name="LinkedArrival" />
+        <PropertyRef Name="LinkedMusher" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

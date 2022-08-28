@@ -20,9 +20,9 @@ namespace Musher
             this.DogsTable = new HashSet<DogsTable>();
         }
     
-        public int ArrivalID { get; set; }
-        public int ArrivalDay { get; set; }
         public long WatchID { get; set; }
+        public int ArrivalDay1 { get; set; }
+        public Nullable<int> ArrivalDay2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DogsTable> DogsTable { get; set; }

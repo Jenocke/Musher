@@ -4,9 +4,9 @@
     <EntitySetMapping Name="Arrivals_Table">
       <EntityTypeMapping TypeName="MusherChipControlModel.Arrivals_Table">
         <MappingFragment StoreEntitySet="Arrivals_Table">
+          <ScalarProperty Name="ArrivalDay2" ColumnName="ArrivalDay2" />
+          <ScalarProperty Name="ArrivalDay1" ColumnName="ArrivalDay1" />
           <ScalarProperty Name="WatchID" ColumnName="WatchID" />
-          <ScalarProperty Name="ArrivalDay" ColumnName="ArrivalDay" />
-          <ScalarProperty Name="ArrivalID" ColumnName="ArrivalID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -21,7 +21,7 @@
     <EntitySetMapping Name="DogsTable">
       <EntityTypeMapping TypeName="MusherChipControlModel.DogsTable">
         <MappingFragment StoreEntitySet="DogsTable">
-          <ScalarProperty Name="LinkedArrival" ColumnName="LinkedArrival" />
+          <ScalarProperty Name="LinkedMusher" ColumnName="LinkedMusher" />
           <ScalarProperty Name="DogChip" ColumnName="DogChip" />
         </MappingFragment>
       </EntityTypeMapping>

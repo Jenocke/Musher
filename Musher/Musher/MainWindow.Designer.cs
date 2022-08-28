@@ -30,16 +30,11 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriesManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewCategoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mushersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addMusherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewMushersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importArrivalsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.viewArrivalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,9 +42,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
-            this.categoriesManagementToolStripMenuItem,
             this.mushersToolStripMenuItem,
-            this.importArrivalsFileToolStripMenuItem});
+            this.importArrivalsFileToolStripMenuItem,
+            this.viewArrivalsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(943, 24);
@@ -62,46 +57,10 @@
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
             this.fichierToolStripMenuItem.Text = "Files";
             // 
-            // categoriesManagementToolStripMenuItem
-            // 
-            this.categoriesManagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addCategoryToolStripMenuItem,
-            this.removeCategoryToolStripMenuItem,
-            this.editCategoryToolStripMenuItem,
-            this.viewCategoriesToolStripMenuItem});
-            this.categoriesManagementToolStripMenuItem.Name = "categoriesManagementToolStripMenuItem";
-            this.categoriesManagementToolStripMenuItem.Size = new System.Drawing.Size(149, 20);
-            this.categoriesManagementToolStripMenuItem.Text = "Categories management";
-            // 
-            // addCategoryToolStripMenuItem
-            // 
-            this.addCategoryToolStripMenuItem.Name = "addCategoryToolStripMenuItem";
-            this.addCategoryToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.addCategoryToolStripMenuItem.Text = "Add Category";
-            // 
-            // removeCategoryToolStripMenuItem
-            // 
-            this.removeCategoryToolStripMenuItem.Name = "removeCategoryToolStripMenuItem";
-            this.removeCategoryToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.removeCategoryToolStripMenuItem.Text = "Remove Category";
-            // 
-            // editCategoryToolStripMenuItem
-            // 
-            this.editCategoryToolStripMenuItem.Name = "editCategoryToolStripMenuItem";
-            this.editCategoryToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.editCategoryToolStripMenuItem.Text = "Edit Category";
-            // 
-            // viewCategoriesToolStripMenuItem
-            // 
-            this.viewCategoriesToolStripMenuItem.Name = "viewCategoriesToolStripMenuItem";
-            this.viewCategoriesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.viewCategoriesToolStripMenuItem.Text = "View Categories";
-            // 
             // mushersToolStripMenuItem
             // 
             this.mushersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addMusherToolStripMenuItem,
-            this.viewMushersToolStripMenuItem});
+            this.addMusherToolStripMenuItem});
             this.mushersToolStripMenuItem.Name = "mushersToolStripMenuItem";
             this.mushersToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.mushersToolStripMenuItem.Text = "Mushers";
@@ -113,12 +72,6 @@
             this.addMusherToolStripMenuItem.Text = "Add Musher";
             this.addMusherToolStripMenuItem.Click += new System.EventHandler(this.addMusherToolStripMenuItem_Click);
             // 
-            // viewMushersToolStripMenuItem
-            // 
-            this.viewMushersToolStripMenuItem.Name = "viewMushersToolStripMenuItem";
-            this.viewMushersToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.viewMushersToolStripMenuItem.Text = "View Mushers";
-            // 
             // importArrivalsFileToolStripMenuItem
             // 
             this.importArrivalsFileToolStripMenuItem.Name = "importArrivalsFileToolStripMenuItem";
@@ -129,6 +82,13 @@
             // openFileDialog1
             // 
             this.openFileDialog1.Filter = "\"Fichiers texte (*.txt)|*.txt|Tous les fichiers (*.*)|*.*\"";
+            // 
+            // viewArrivalsToolStripMenuItem
+            // 
+            this.viewArrivalsToolStripMenuItem.Name = "viewArrivalsToolStripMenuItem";
+            this.viewArrivalsToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.viewArrivalsToolStripMenuItem.Text = "View arrivals";
+            this.viewArrivalsToolStripMenuItem.Click += new System.EventHandler(this.viewArrivalsToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -151,15 +111,10 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem categoriesManagementToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addCategoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeCategoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editCategoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewCategoriesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mushersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addMusherToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewMushersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importArrivalsFileToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem viewArrivalsToolStripMenuItem;
     }
 }

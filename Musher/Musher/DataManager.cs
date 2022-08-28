@@ -22,7 +22,7 @@ namespace Musher
                     long staffChipID2 = 056000000000002;
                     long staffChipID3 = 056000000000003;
                     string line = "";
-                    int currentWatch = 0;
+                    long currentWatch = 0;
                     while ((line = fileReader.ReadLine()) != null)
                     {
                         //if end of file
@@ -43,24 +43,19 @@ namespace Musher
                                 var arrival = new Arrivals_Table();
 
                                 arrival.WatchID = chipID;
-                                arrival.ArrivalDay = date;
+                                arrival.ArrivalDay1 = date;
+                                arrival.ArrivalDay2 = 0;
                                 musherChipControlEntities.Arrivals_Table.Add(arrival);
                                 musherChipControlEntities.SaveChanges();
-                                currentWatch = arrival.ArrivalID;
-                                MessageBox.Show("Arrival Added");
+                                currentWatch = chipID;
                             }
                             else if (rows.Count() == 1)
                             {
-                                if (rows[0].ArrivalDay != date)
+                                if (rows[0].ArrivalDay1 != date)
                                 {
-                                    var arrival = new Arrivals_Table();
-
-                                    arrival.WatchID = chipID;
-                                    arrival.ArrivalDay = date;
-                                    musherChipControlEntities.Arrivals_Table.Add(arrival);
+                                    rows[0].ArrivalDay2 = date;
                                     musherChipControlEntities.SaveChanges();
-                                    currentWatch = arrival.ArrivalID;
-                                    MessageBox.Show("Arrival Added");
+                                    currentWatch = chipID;
                                 }
                             }
                             while (true)
@@ -68,9 +63,6 @@ namespace Musher
                                 line = fileReader.ReadLine();
                                 index = line.IndexOf(" ");
                                 chipID = Int64.Parse(line.Substring(0, index));
-                                line = line.Remove(0, index + 1);
-                                index = line.IndexOf(" ");
-                                date = Int32.Parse(line.Substring(0, index));
                                 if (chipID == staffChipID || chipID == staffChipID2 || chipID == staffChipID3)
                                 { break; }
                                 else
@@ -78,7 +70,7 @@ namespace Musher
                                     var dog = new DogsTable();
 
                                     dog.DogChip = chipID;
-                                    dog.LinkedArrival = currentWatch;
+                                    dog.LinkedMusher = currentWatch;
                                     musherChipControlEntities.DogsTable.Add(dog);
                                     musherChipControlEntities.SaveChanges();
 
